@@ -1,0 +1,96 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Ad Creator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="bootstrap-3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+     	        <header>
+     	            <div class="logo col-sm-8 col-sm-offset-2"></div>
+     	        </header>
+                <div class="col-sm-8 col-sm-offset-2">
+     	            <h1>Ad Creator Test Page</h1>
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label>URL</label>
+                            <input name="url" type="url" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Choose an option (todo)</label>
+                            <select name="option1" class="form-control">
+                            </select>
+                        </div>
+                        <div class="field-set" data-passepartout-options>
+                            <legend>Passepartout Options</legend>
+                            <!-- <div class="form-group">
+                                <div class="control-label"><label>Obfuscate</label></div>
+                                <label class="radio-inline">
+                                    <input name="passepartout[obfuscate]" type="radio" class="" value="1"/>
+                                    Enabled
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="passepartout[obfuscate]" type="radio" class="" value=""/>
+                                    Disabled
+                                </label>
+                            </div> -->
+                            <div class="form-group">
+                                <label>SM Domain</label>
+                                <input name="passepartout[domain]" type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="field-set" data-jw-player-options>
+                            <legend>JW Player Options</legend>
+                            <div class="form-group">
+                                <label>JW API Key</label>
+                                <input name="JWPlayer[key]" type="text" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>JW Script</label>
+                                <input name="JWPlayer[script]" type="text" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Primary Tech (HTML5 or Flash)</label>
+                                <select name="JWPlayer[primary]" class="form-control"></select>
+                            </div>
+                            <div class="form-group">
+                                <label>JW Advertising Client</label>
+                                <select name="JWPlayer[advertisingClient]" class="form-control"/></select>
+                            </div>
+                            <div class="form-group">
+                                <div class="control-label"><label>Proxify plugin SWF instead of VAST</label></div>
+                                <label class="radio-inline">
+                                    <input name="JWPlayer[proxifyPlugin]" type="radio" class="" value="1"/>
+                                    Enabled
+                                </label>
+                                <label class="radio-inline">
+                                    <input name="JWPlayer[proxifyPlugin]" type="radio" class="" value=""/>
+                                    Disabled
+                                </label>
+                            </div>
+                        </div>
+                        <div class="field-set" data-test-player-options>
+                            <legend>Test Player Options</legend>
+                            <div class="form-group">
+                                <label>SWF URL</label>
+                                <input name="TestPlayer[swfUrl]" type="text" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="op" value="Run" class="btn btn-primary" />
+                            <input type="reset" value="Reset" class="btn btn-default" />
+                            <a href="?" class="btn btn-default">Defaults</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

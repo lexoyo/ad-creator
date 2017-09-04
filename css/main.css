@@ -1,0 +1,22 @@
+body * {
+    color: rgb(29, 33, 41);
+}
+header {
+    display: flex;
+    height: 90px;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 1px 0px;
+}
+h1 {
+    color: rgb(32, 55, 95);
+    direction: ltr;
+    font-family: "helvetica neue",helvetica,arial,"lucida grande",sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+}
+.logo {
+    background-image: url("../assets/facebook-dev.png");
+    width: 248px;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+}

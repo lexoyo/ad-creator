@@ -17,16 +17,17 @@ help create large advert campaign
 * use the app to generate multiple ads out of the articles
 
 
-
 ## Next steps
 
-
+* wordpress plugin
 * consolidate insights for all ads
 * retarget users with a new related product
-* use FB webhook/insights API to create ads specific to a new prospect
+* use FB webhook/insights API to create ads specific to a new prospect or target fans
 
 other (useless) ideas
 * launch a campaign with an email?
+
+
 
 ## third party tools
 
@@ -59,6 +60,7 @@ embed ly
 
 redirect
 * https://www.cloudflare.com/a/page-rules/lexoyo.me
+* https://github.com/ns1/contrib
 * https://lexoyo.me/proto-fb/advertize.php
 * used in https://developers.facebook.com/apps/1948258332120118/settings/ and https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request and https://ifttt.com/applets/60553950d-if-new-feed-item-from-http-www-silexlabs-org-feed-then-make-a-web-request
 
