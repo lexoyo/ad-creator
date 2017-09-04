@@ -95,7 +95,7 @@ function createAdCreative($account, $image, $name, $title, $body, $url) {
           AdCreativeFields::OBJECT_URL => $url,
       ));
   $creative->create();
-  //echo 'Creative ID: '.$creative->id . "\n";
+  echo 'Creative ID: '.$creative->id . "\n<br/>\n";
   return $creative;
 }
 
@@ -113,7 +113,7 @@ function createAd($account, $adset, $creative, $name) {
   		Ad::STATUS_PARAM_NAME => Ad::STATUS_PAUSED,
       	    ));
   $ad->create();
-  // echo 'Ad ID:' . $ad->id . "\n";
+  echo 'Ad ID:' . $ad->id . "\n<br/>\n";
   return $ad;
 }
 
@@ -123,7 +123,7 @@ use FacebookAds\Object\Fields\AdPreviewFields;
 use FacebookAds\Object\Values\AdPreviewAdFormatValues;
 function getPreview($creative) {
   $previews = $creative->getPreviews(array(), array(
-    AdPreviewFields::AD_FORMAT => AdPreviewAdFormatValues::DESKTOP_FEED_STANDARD,
+    AdPreviewFields::AD_FORMAT => AdPreviewAdFormatValues::RIGHT_COLUMN_STANDARD,
   ));
   $preview = $previews->offsetGet(0);
   // print_r($preview->{AdPreviewFields::BODY});

@@ -20,3 +20,9 @@ h1 {
     background-repeat: no-repeat;
     background-position-y: 50%;
 }
+iframe {
+border: solid !important;
+min-height: 250px;
+margin: 25px;
+overflow: hidden;
+}

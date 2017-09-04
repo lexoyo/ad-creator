@@ -55,9 +55,10 @@ rss
 * https://adce2c63.ngrok.io/advertize.php
 
 embed ly
-* http://embed.ly/code?url=http%3A%2F%2Fwww.vauxhall.co.uk%2Foffers-finance%2Fcars_offers%2Fcorsa%2Fflexible-personal-lease.html
+* https://api.embed.rocks/api/?url=http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html&key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2
 * http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
-* http://embed.ly/docs/explore/extract?url=http%3A%2F%2Fwww.vauxhall.co.uk%2Foffers-finance%2Fcars_offers%2Fcorsa%2Fflexible-personal-lease.html
+* https://www.silexlabs.org/event/silex-labs-aperopensource-edition-mois-daout/
+* https://www.thinkgeek.com/product/knio/
 
 redirect
 * https://www.cloudflare.com/a/page-rules/lexoyo.me
