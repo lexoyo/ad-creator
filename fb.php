@@ -1,74 +1,121 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
 
-use Facebook\Facebook;
-use Facebook\Exceptions\FacebookResponseException;
-use Facebook\Exceptions\FacebookSDKException;
 
-// Init PHP Sessions
-session_start();
+use FacebookAds\Object\AdCreativeLinkData;
+use FacebookAds\Object\Fields\AdCreativeLinkDataFields;
+use FacebookAds\Object\AdCreativeObjectStorySpec;
+use FacebookAds\Object\Fields\AdCreativeObjectStorySpecFields;
 
-$fb = new Facebook([
-  'app_id' => '1948258332120118',
-  'app_secret' => 'cd1c95cbe42d3c6935515435aa263d4b',
-]);
 
-$helper = $fb->getRedirectLoginHelper();
-
-if (!isset($_SESSION['facebook_access_token'])) {
-  $_SESSION['facebook_access_token'] = null;
+// wrap up all following methods calls into 1
+function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
+  $account = getAccount($ad_account_id);
+  $adset = getAdSets($account)[0];
+  $image = createAdImage($account, $imageUrl);
+  $creative = createAdCreative($account, $image, 'Generated creative '.date('m-d-Y_hia'), $title, $body, $url);
+  $ad = createAd($account, $adset, $creative, 'Generated ad '.date('m-d-Y_hia'));
+  $preview = getPreview($creative);
+  return $preview->body;
 }
 
-if (!$_SESSION['facebook_access_token']) {
-  $helper = $fb->getRedirectLoginHelper();
-  try {
-    $_SESSION['facebook_access_token'] = (string) $helper->getAccessToken();
-  } catch(FacebookResponseException $e) {
-    // When Graph returns an error
-    echo 'Graph returned an error: ' . $e->getMessage();
-    exit;
-  } catch(FacebookSDKException $e) {
-    // When validation fails or other local issues
-    echo 'Facebook SDK returned an error: ' . $e->getMessage();
-    exit;
+// init FB SDK
+use FacebookAds\Api;
+use FacebookAds\Logger\CurlLogger;
+function initFBSDK($app_id, $app_secret, $access_token) {
+  $api = Api::init($app_id, $app_secret, $access_token);
+  Api::instance()->setLogger(new CurlLogger());
+}
+
+// upload image
+use FacebookAds\Object\AdImage;
+use FacebookAds\Object\Fields\AdImageFields;
+function createAdImage($account, $file) {
+  $image = new AdImage(null, $account->id);
+  $image->{AdImageFields::FILENAME} = $file;
+  
+  $image->create();
+  // echo 'Image Hash: '.$image->{AdImageFields::HASH}.PHP_EOL;
+  return $image;
+}
+
+// get the account out of the config
+use FacebookAds\Object\AdAccount;
+function getAccount($ad_account_id) {
+  return new AdAccount($ad_account_id);
+}
+
+// list images
+function listAdImages($account) {
+  $images = $account->getAdImages();
+  //echo count($images);
+  foreach ($images as $image) {
+    echo $image->{AdImageFields::HASH}.PHP_EOL;
   }
 }
 
-if ($_SESSION['facebook_access_token']) {
-  echo "You are logged in!";
-} else {
-  $permissions = ['ads_management'];
-  $loginUrl = $helper->getLoginUrl('http://localhost:8888/marketing-api/', $permissions);
-  echo '<a href="' . $loginUrl . '">Log in with Facebook</a>';
-} 
+// get the adsets for this account
+use FacebookAds\Object\Fields\AdSetFields;
+function getAdSets($account) {
+  $adsets = $account->getAdSets(array(
+    AdSetFields::NAME,
+  ));
+
+  // This will output the name of all fetched ad sets.
+  //foreach ($adsets as $adset) {
+  //  echo 'adset found: ' . $adset->name;
+  //}
+  // $adset_id = $adsets[0]->id;
+  //echo "choose adset " ;
+  //print_r($adset_id);
+  return $adsets;
+}
+
+// Create an AdCreative
+use FacebookAds\Object\AdCreative;
+use FacebookAds\Object\Fields\AdCreativeFields;
+function createAdCreative($account, $image, $name, $title, $body, $url) {
+  $creative = new AdCreative(null, $account->id);
+  $creative->setData(array(
+          AdCreativeFields::NAME => $name,
+          AdCreativeFields::TITLE => $title,
+          AdCreativeFields::BODY => $body,
+          AdCreativeFields::IMAGE_HASH => $image->hash,
+          AdCreativeFields::OBJECT_URL => $url,
+      ));
+  $creative->create();
+  //echo 'Creative ID: '.$creative->id . "\n";
+  return $creative;
+}
 
 
+// Create an Ad
+use FacebookAds\Object\Ad;
+use FacebookAds\Object\Fields\AdFields;
+function createAd($account, $adset, $creative, $name) {
+  $ad = new Ad(null, $account->id);
+  $ad->setData(array(
+          AdFields::CREATIVE =>
+              array('creative_id' => $creative->id),
+      	        AdFields::NAME => $name,
+  		AdFields::ADSET_ID => $adset->id,
+  		Ad::STATUS_PARAM_NAME => Ad::STATUS_PAUSED,
+      	    ));
+  $ad->create();
+  // echo 'Ad ID:' . $ad->id . "\n";
+  return $ad;
+}
 
+// ad preview
+// TODO: pass the type of preview (desktop, mobile, right col)
+use FacebookAds\Object\Fields\AdPreviewFields;
+use FacebookAds\Object\Values\AdPreviewAdFormatValues;
+function getPreview($creative) {
+  $previews = $creative->getPreviews(array(), array(
+    AdPreviewFields::AD_FORMAT => AdPreviewAdFormatValues::DESKTOP_FEED_STANDARD,
+  ));
+  $preview = $previews->offsetGet(0);
+  // print_r($preview->{AdPreviewFields::BODY});
+  return $preview;
+}
 
-
-
-
-
-
-
-
-
-// use FacebookAds\Object\Campaign;
-// use FacebookAds\Object\Fields\CampaignFields;
-// use FacebookAds\Object\Values\CampaignObjectiveValues;
-// 
-// function newCampaign($name) {
-// 
-//   $campaign = new Campaign(null, 'act_<AD_ACCOUNT_ID>');
-//   $campaign->setData(array(
-//     CampaignFields::NAME => $name,
-//     CampaignFields::OBJECTIVE => CampaignObjectiveValues::LINK_CLICKS,
-//   ));
-//   
-//   $campaign->create(array(
-//     Campaign::STATUS_PARAM_NAME => Campaign::STATUS_PAUSED,
-//   ));
-// } 
-// 
-// 
