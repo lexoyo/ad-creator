@@ -12,12 +12,24 @@ use FacebookAds\Object\Fields\AdCreativeObjectStorySpecFields;
 function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
   $account = getAccount($ad_account_id);
   $adset = getAdSets($account)[0];
-  $image = createAdImage($account, $imageUrl);
+  $path = saveTmpImage($imageUrl);
+  $image = createAdImage($account, $path);
   $creative = createAdCreative($account, $image, 'Generated creative '.date('m-d-Y_hia'), $title, $body, $url);
   $ad = createAd($account, $adset, $creative, 'Generated ad '.date('m-d-Y_hia'));
   $preview = getPreview($creative);
   return $preview->body;
 }
+function saveTmpImage($url) {
+  $array = explode('.', $url);
+  $extension = end($array);
+  $path = 'assets/' . 'fb-proto-tmp-' . uniqid(rand(), true) . ".$extension";
+  file_put_contents(
+    $path,
+    file_get_contents($url)
+  );
+  return $path;
+}
+
 
 // init FB SDK
 use FacebookAds\Api;
@@ -33,9 +45,8 @@ use FacebookAds\Object\Fields\AdImageFields;
 function createAdImage($account, $file) {
   $image = new AdImage(null, $account->id);
   $image->{AdImageFields::FILENAME} = $file;
-  
   $image->create();
-  // echo 'Image Hash: '.$image->{AdImageFields::HASH}.PHP_EOL;
+  // echo "**************** Image Hash: ($file)".$image->{AdImageFields::HASH}.PHP_EOL;
   return $image;
 }
 
