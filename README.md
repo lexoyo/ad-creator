@@ -16,6 +16,10 @@ help create large advert campaign
 * generate articles
 * use the app to generate multiple ads out of the articles
 
+difficulties
+* had to understand the different accounts involved (ad account, business, my account)
+* ad manager do not see the sandbox ad accounts
+* 50 ads per set, had to check and cleanup
 
 ## Next steps
 

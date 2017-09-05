@@ -12,6 +12,7 @@ use FacebookAds\Object\Fields\AdCreativeObjectStorySpecFields;
 function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
   $account = getAccount($ad_account_id);
   $adset = getAdSets($account)[0];
+  cleanupAdset($adset);
   $path = saveTmpImage($imageUrl);
   $image = createAdImage($account, $path);
   $creative = createAdCreative($account, $image, 'Generated creative '.date('m-d-Y_hia'), $title, $body, $url);
@@ -36,15 +37,17 @@ use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 function initFBSDK($app_id, $app_secret, $access_token) {
   $api = Api::init($app_id, $app_secret, $access_token);
-  Api::instance()->setLogger(new CurlLogger());
+  Api::instance()->setLogger(new CurlLogger(fopen("./log.txt", "w")));
+
 }
 
 // upload image
 use FacebookAds\Object\AdImage;
 use FacebookAds\Object\Fields\AdImageFields;
 function createAdImage($account, $file) {
-  $image = new AdImage(null, $account->id);
+  $image = new AdImage();
   $image->{AdImageFields::FILENAME} = $file;
+  $image->setParentId($account->id);
   $image->create();
   // echo "**************** Image Hash: ($file)".$image->{AdImageFields::HASH}.PHP_EOL;
   return $image;
@@ -66,6 +69,7 @@ function listAdImages($account) {
 }
 
 // get the adsets for this account
+use FacebookAds\Object\Ad;
 use FacebookAds\Object\Fields\AdSetFields;
 function getAdSets($account) {
   $adsets = $account->getAdSets(array(
@@ -73,20 +77,37 @@ function getAdSets($account) {
   ));
 
   // This will output the name of all fetched ad sets.
-  //foreach ($adsets as $adset) {
-  //  echo 'adset found: ' . $adset->name;
-  //}
+  // foreach ($adsets as $adset) {
+  // echo 'adset found: ' . $adset->name;
+  // }
   // $adset_id = $adsets[0]->id;
   //echo "choose adset " ;
   //print_r($adset_id);
   return $adsets;
 }
 
+// if there is too many ads in the adset,
+// delete all ads from the adset
+function cleanupAdset($adset) {
+  $ads = $adset->getAds();
+  // echo "Found " . count($ads) . " ads in adset";
+  if(count($ads) > 45) {
+    foreach($ads as $ad) {
+      $ad->deleteSelf();
+    }
+    // delete all ads from the adset
+    echo "Found " . count($ads) . " ads in adset, had to cleanup";
+  }
+}
+
+
 // Create an AdCreative
 use FacebookAds\Object\AdCreative;
 use FacebookAds\Object\Fields\AdCreativeFields;
 function createAdCreative($account, $image, $name, $title, $body, $url) {
-  $creative = new AdCreative(null, $account->id);
+  $creative = new AdCreative();
+  $creative->setParentId($account->id);
+
   $creative->setData(array(
           AdCreativeFields::NAME => $name,
           AdCreativeFields::TITLE => $title,
@@ -101,10 +122,11 @@ function createAdCreative($account, $image, $name, $title, $body, $url) {
 
 
 // Create an Ad
-use FacebookAds\Object\Ad;
 use FacebookAds\Object\Fields\AdFields;
 function createAd($account, $adset, $creative, $name) {
-  $ad = new Ad(null, $account->id);
+  $ad = new Ad();
+  $ad->setParentId($account->id);
+
   $ad->setData(array(
           AdFields::CREATIVE =>
               array('creative_id' => $creative->id),

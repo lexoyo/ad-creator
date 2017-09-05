@@ -17,7 +17,7 @@
      	        <header>
      	            <div class="logo col-sm-8 col-sm-offset-2"></div>
      	        </header>
-                <div class="col-sm-8 col-sm-offset-2">
+                <div class="col-sm-8 col-sm-offset-2 centered">
  <?php
 
 include('main.php');
@@ -28,7 +28,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo main($url);
     ?>
       <br/>
-      Ad created, <a href="https://www.facebook.com/ads/manager/account/ads/">activate it now in the ad manager</a>. Or <a href="/">give it another shot here</a>
+      Ad created, <a href="https://www.facebook.com/ads/manager/account/ads/">activate it now in the ad manager</a>.
+      <br/>Or <a href="/">give it another shot here</a>.
     <?php
   }
   else {

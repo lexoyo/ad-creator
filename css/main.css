@@ -5,6 +5,7 @@ header {
     display: flex;
     height: 90px;
     box-shadow: rgba(0, 0, 0, 0.14) 0px 1px 1px 0px;
+    margin-bottom: 30px;
 }
 h1 {
     color: rgb(32, 55, 95);
@@ -21,8 +22,21 @@ h1 {
     background-position-y: 50%;
 }
 iframe {
-border: solid !important;
-min-height: 250px;
-margin: 25px;
-overflow: hidden;
+  border: solid !important;
+  min-width: 290px;
+  min-height: 260px;
+  margin: 25px;
+}
+.centered {
+  text-align: center;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+.no-padding-left {
+  padding-left: 0;
+}
+.clear {
+  clear: both;
 }

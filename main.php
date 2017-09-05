@@ -1,5 +1,6 @@
 <?php
 
+date_default_timezone_set('Europe/Bucharest');
 require_once __DIR__ . '/vendor/autoload.php';
 include('fb.php');
 
@@ -24,7 +25,13 @@ function getConfig($name) {
 function main($url) {
   // Embed
   $embedUrl = 'https://api.embed.rocks/api/?key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2&url=' . urlencode($url);
-  $embedData = json_decode(file_get_contents($embedUrl));
+
+  $embedDataStr = file_get_contents($embedUrl);
+  if(!$embedDataStr) {
+    echo "Error: Was not able to load data from $embedUrl";
+    throw "Error: Was not able to load data from $embedUrl";
+  }
+  $embedData = json_decode($embedDataStr);
   //print_r($embedData);
 
   $title = preg_replace('/[^ \w]+/', '', $embedData->title); // Ads can only contain letters, numbers, punctuation marks, and spaces.
