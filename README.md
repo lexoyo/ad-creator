@@ -18,6 +18,7 @@ help create large advert campaign
 
 difficulties
 * had to understand the different accounts involved (ad account, business, my account)
+* best way to lookup for properties and methods on a class is to look at the source code of the php sdk
 * ad manager do not see the sandbox ad accounts
 * 50 ads per set, had to check and cleanup
 

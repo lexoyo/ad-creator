@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6434f21e073406f563239b502492e7e1",
-    "content-hash": "b43a381fefaee0cb37bb349bc1d62bf2",
+    "hash": "7842a813b0a898d103302b65d0a4ba95",
+    "content-hash": "c35f040bc2b6ae4c3963ed1b734a51bc",
     "packages": [
         {
             "name": "facebook/php-ads-sdk",
@@ -51,6 +51,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-mbstring": "*"
+    },
     "platform-dev": []
 }
