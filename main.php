@@ -3,11 +3,23 @@
 require_once __DIR__ . '/vendor/autoload.php';
 include('fb.php');
 
-function checkEnvVar($name, $val) {
+if(file_exists('config.php'))
+  include 'config.php';
+
+function getConfig($name) {
+  // look for the env var
+  $val = getenv($name);
+  print_r($val);
+  // look for the config var defined in config.php
+  if(!$val && isset($GLOBALS[$name])) {
+    $val = $GLOBALS[$name];
+  }
+  // check that it exists
   if(!$val) {
-    echo "env var $name is required";
+    echo "env var $name is required ($val)";
     die();
   }
+  return $val;
 }
 function main($url) {
   // Embed
@@ -22,14 +34,10 @@ function main($url) {
   //echo "$title\n$body\n$imageUrl";
   
   // FB
-  $ad_account_id = getenv('FB_ACCOUNT_ID');
-  checkEnvVar('FB_ACCOUNT_ID', $ad_account_id);
-  $app_id = getenv('FB_APP_ID');
-  checkEnvVar('FB_APP_ID', $app_id);
-  $app_secret = getenv('FB_APP_SECRET');
-  checkEnvVar('FB_APP_SECRET', $app_secret);
-  $access_token = getenv('FB_APP_ACCESS_TOKEN');
-  checkEnvVar('FB_APP_ACCESS_TOKEN', $access_token);
+  $ad_account_id = getConfig('FB_ACCOUNT_ID');
+  $app_id = getConfig('FB_APP_ID');
+  $app_secret = getConfig('FB_APP_SECRET');
+  $access_token = getConfig('FB_APP_ACCESS_TOKEN');
 
   // $imageUrl = 'http://aotw-pd.s3.amazonaws.com/images/crash_test_baixa.jpg';
 
