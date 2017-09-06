@@ -7,9 +7,13 @@ use FacebookAds\Object\Fields\AdCreativeLinkDataFields;
 use FacebookAds\Object\AdCreativeObjectStorySpec;
 use FacebookAds\Object\Fields\AdCreativeObjectStorySpecFields;
 
-
 // wrap up all following methods calls into 1
-function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
+function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body, $user) {
+
+  if(isset($user)) {
+    $ad_account_id = getCurrentAdAccountId(getAdAccounts($user))->id;
+    echo "Found account $ad_account_id\n<br>";
+  }
   $account = getAccount($ad_account_id);
   $adsets = getAdSets($account);
   if(count($adsets) == 0) {
@@ -25,6 +29,16 @@ function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
   $preview = getPreview($creative);
   return $preview->body;
 }
+use FacebookAds\Object\AdAccountUser;
+function getAdAccounts($user) {
+  $adUser = new AdAccountUser('me');
+  return $adUser->getAdAccounts();
+}
+function getCurrentAdAccountId($adAccounts) {
+  // echo $adAccounts->current()->id;
+  return $adAccounts->current();
+}
+
 function saveTmpImage($url) {
   $array = explode('.', $url);
   $extension = end($array);

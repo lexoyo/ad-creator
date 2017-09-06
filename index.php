@@ -30,7 +30,7 @@ $user = getUser($fb);
 displayUser($user);
 ?>
      	            <!-- <h1>Ad Creator Test Page</h1> -->
-                    <form id="form" action="./advertise.php" method="POST" class="row">
+                    <form id="form" action="./generate.php" method="GET" class="row">
                         <div class="field-set">
                             <legend>Advertise an URL</legend>
                             <div class="form-group col-md-9 no-padding-left">

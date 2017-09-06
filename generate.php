@@ -41,8 +41,7 @@ else if(isset($_GET["url"])) {
   $url = $_GET["url"];
 }
 if(isset($url)) {
-  //echo main($url, $user);
-  echo main($url, null); // no user here, use the config one
+  echo main($url, $user);
   ?>
     <br/>
     Ad created, <a href="https://www.facebook.com/ads/manager/account/ads/">activate it now in the ad manager</a>.

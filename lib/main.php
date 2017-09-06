@@ -4,7 +4,7 @@ require_once 'config.php';
 require_once 'fb-ads.php';
 
 
-function main($url) {
+function main($url, $user) {
   // Embed
   $embedUrl = 'https://api.embed.rocks/api/?key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2&url=' . urlencode($url);
 
@@ -28,5 +28,5 @@ function main($url) {
   $access_token = getConfig('FB_APP_ACCESS_TOKEN');
 
   initFBSDK($app_id, $app_secret, $access_token);
-  return createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body);
+  return createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body, $user);
 }

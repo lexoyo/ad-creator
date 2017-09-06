@@ -16,12 +16,23 @@ help create large advert campaign
 * generate articles
 * use the app to generate multiple ads out of the articles
 
+## Demo
+
 test urls (http://ad-creator.herokuapp.com/):
 * http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
 * https://www.silexlabs.org/event/silex-labs-aperopensource-edition-mois-daout/
 * https://www.thinkgeek.com/product/knio/
 * https://singchan.github.io/bot-emploi/
 
+The web hook (http://localhost:8080/advertise.php?url=)
+* https://github.com/lexoyo/so-simple-theme/
+* https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request
+
+third party tools
+* ifttt to automate (watch RSS feeds, emails...)
+* embed.ly to extract the main features of the content
+* official FB php SDK
+* cloudflare and ngrok for tunnelling and work locally with https URLs for webhooks
 
 difficulties
 * had to understand the different accounts involved (ad account, business, my account)
@@ -29,24 +40,15 @@ difficulties
 * ad manager do not see the sandbox ad accounts
 * 50 ads per set, had to check and cleanup
 
-## Next steps
-
+Next steps
+* error handling!!
 * wordpress plugin
 * consolidate insights for all ads
 * retarget users with a new related product
 * use FB webhook/insights API to create ads specific to a new prospect or target fans
 
 other (useless) ideas
-* launch a campaign with an email?
-
-
-
-## third party tools
-
-* ifttt to automate (watch RSS feeds, emails...)
-* embed.ly to extract the main features of the content
-* official FB php SDK
-* cloudflare and ngrok for tunnelling and work locally with https URLs for webhooks
+* launch a campaign with an email or sms?
 
 
 ## use
