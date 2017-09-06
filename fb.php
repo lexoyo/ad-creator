@@ -11,7 +11,12 @@ use FacebookAds\Object\Fields\AdCreativeObjectStorySpecFields;
 // wrap up all following methods calls into 1
 function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body) {
   $account = getAccount($ad_account_id);
-  $adset = getAdSets($account)[0];
+  $adsets = getAdSets($account);
+  if(count($adsets) == 0) {
+    echo "creating first ad set\n<br>\n";
+    createAdset($account);
+  }
+  $adset = $adsets[0];
   cleanupAdset($adset);
   $path = saveTmpImage($imageUrl);
   $image = createAdImage($account, $path);
@@ -84,6 +89,44 @@ function getAdSets($account) {
   //echo "choose adset " ;
   //print_r($adset_id);
   return $adsets;
+}
+
+// create an adset
+use FacebookAds\Object\Campaign;
+use FacebookAds\Object\Fields\CampaignFields;
+
+use FacebookAds\Object\AdSet;
+use FacebookAds\Object\Fields\TargetingFields;
+use FacebookAds\Object\Values\BillingEvents;
+use FacebookAds\Object\Targeting;
+function createAdset($account) {
+  $campaign = new Campaign();
+  $campaign->setParentId($account->id);
+
+  $campaign->setData(array(
+    CampaignFields::NAME => 'My First Campaign',
+    CampaignFields::OBJECTIVE => 'LINK_CLICKS',
+  ));
+
+  $campaign->create(array(
+    Campaign::STATUS_PARAM_NAME => Campaign::STATUS_PAUSED,
+  ));
+
+  $adset = new AdSet();
+  $adset->setParentId($account->id);
+  $adset->setData(array(
+    AdSetFields::NAME => 'My Ad Set',
+    AdSetFields::BILLING_EVENT => BillingEvents::IMPRESSIONS,
+    AdSetFields::BID_AMOUNT => 2,
+    AdSetFields::DAILY_BUDGET => 1000,
+    AdSetFields::CAMPAIGN_ID => $campaign->id,
+    AdSetFields::TARGETING => (new Targeting())->setData(array(
+      TargetingFields::GEO_LOCATIONS => array(
+        'countries' => array('US'),
+      ),
+    )),
+  ));
+  $adset->create();
 }
 
 // if there is too many ads in the adset,
