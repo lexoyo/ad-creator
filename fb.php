@@ -90,13 +90,13 @@ function getAdSets($account) {
 // delete all ads from the adset
 function cleanupAdset($adset) {
   $ads = $adset->getAds();
-  // echo "Found " . count($ads) . " ads in adset";
-  if(count($ads) > 45) {
+  if(count($ads) > 15) {
+    echo "Cleaning up " . count($ads) . " ads from adset $adset->name.\n<br>\n";
     foreach($ads as $ad) {
       $ad->deleteSelf();
     }
     // delete all ads from the adset
-    echo "Found " . count($ads) . " ads in adset, had to cleanup";
+    echo "Found " . count($ads) . " ads in adset, had to cleanup.\n<br>\n";
   }
 }
 
