@@ -16,6 +16,13 @@ help create large advert campaign
 * generate articles
 * use the app to generate multiple ads out of the articles
 
+test urls (http://ad-creator.herokuapp.com/):
+* http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
+* https://www.silexlabs.org/event/silex-labs-aperopensource-edition-mois-daout/
+* https://www.thinkgeek.com/product/knio/
+* https://singchan.github.io/bot-emploi/
+
+
 difficulties
 * had to understand the different accounts involved (ad account, business, my account)
 * best way to lookup for properties and methods on a class is to look at the source code of the php sdk
@@ -61,9 +68,6 @@ rss
 
 embed ly
 * https://api.embed.rocks/api/?url=http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html&key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2
-* http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
-* https://www.silexlabs.org/event/silex-labs-aperopensource-edition-mois-daout/
-* https://www.thinkgeek.com/product/knio/
 
 redirect
 * https://www.cloudflare.com/a/page-rules/lexoyo.me
