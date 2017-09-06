@@ -18,48 +18,16 @@
      	            <a class="logo col-sm-8 col-sm-offset-2" href="/"></a>
 <div id="status" class="col-sm-4 col-sm-offset-2"></div>
      	        </header>
-		<div class="col-sm-8 col-sm-offset-2 centered">
-		<div class="preview">
- <?php
-include('lib/fb-auth.php');
-$fb = getFacebook();
-if(!isLoggedIn($fb) || !getUser($fb)) {
-//  header('Location: /login.php');
-//  exit;
-}
-else {
-  $user = getUser($fb);
-  displayUser($user);
-}
-
-include('lib/main.php');
-
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if(isset($_POST["url"])) {
-    $url = $_POST["url"];
-    echo main($url);
-    ?>
-      <br/>
-      Ad created, <a href="https://www.facebook.com/ads/manager/account/ads/">activate it now in the ad manager</a>.
-      <br/>Or <a href="/">give it another shot here</a>.
-    <?php
-  }
-  else {
-    ?>
-    url is expected in POST data, go back to <a href="/">test page</a>
-    <?php
-  }
-}
-else {
-?>
-POST request expected, go back to <a href="/">test page</a>
+                <div class="col-sm-8 col-sm-offset-2">
 <?php
-}
+include('lib/fb-auth.php');
+logout();
 ?>
-        	</div>
+Logged out.
+      <br/><a href="/">start again here</a>.
+                </div>
+            </div>
         </div>
     </body>
 </html>
-
-
 

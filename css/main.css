@@ -21,11 +21,15 @@ h1 {
     background-repeat: no-repeat;
     background-position-y: 50%;
 }
-iframe {
+.preview iframe {
   border: solid !important;
   min-width: 290px;
   min-height: 260px;
   margin: 25px;
+}
+#status {
+  margin: auto;
+  text-align: right;
 }
 .centered {
   text-align: center;
