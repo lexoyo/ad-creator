@@ -1,28 +1,9 @@
 <?php
 
-date_default_timezone_set('Europe/Bucharest');
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-require_once __DIR__ . '/vendor/autoload.php';
-include('fb.php');
+require_once 'config.php';
+require_once 'fb-ads.php';
 
-if(file_exists('config.php'))
-  include 'config.php';
 
-function getConfig($name) {
-  // look for the env var
-  $val = getenv($name);
-  // look for the config var defined in config.php
-  if(!$val && isset($GLOBALS[$name])) {
-    $val = $GLOBALS[$name];
-  }
-  // check that it exists
-  if(!$val) {
-    echo "env var $name is required ($val)";
-    die();
-  }
-  return $val;
-}
 function main($url) {
   // Embed
   $embedUrl = 'https://api.embed.rocks/api/?key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2&url=' . urlencode($url);

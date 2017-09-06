@@ -16,50 +16,24 @@
             <div class="row">
      	        <header>
      	            <a class="logo col-sm-8 col-sm-offset-2" href="/"></a>
-<div id="status" class="col-sm-4 col-sm-offset-2"></div>
+<div id="status"></div>
      	        </header>
-		<div class="col-sm-8 col-sm-offset-2 centered">
-		<div class="preview">
- <?php
+                <div class="col-sm-8 col-sm-offset-2">
+<?php
 include('lib/fb-auth.php');
 $fb = getFacebook();
-if(!isLoggedIn($fb) || !getUser($fb)) {
-//  header('Location: /login.php');
-//  exit;
+$user = getUser($fb);
+if($user) {
+  header('Location: /');
+  exit(0);
 }
-else {
-  $user = getUser($fb);
-  displayUser($user);
-}
-
-include('lib/main.php');
-
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if(isset($_POST["url"])) {
-    $url = $_POST["url"];
-    echo main($url);
-    ?>
-      <br/>
-      Ad created, <a href="https://www.facebook.com/ads/manager/account/ads/">activate it now in the ad manager</a>.
-      <br/>Or <a href="/">give it another shot here</a>.
-    <?php
-  }
-  else {
-    ?>
-    url is expected in POST data, go back to <a href="/">test page</a>
-    <?php
-  }
-}
-else {
+loginCallback($fb);
+header('Location: /');
 ?>
-POST request expected, go back to <a href="/">test page</a>
-<?php
-}
-?>
-        	</div>
+
+		</div>
+            </div>
         </div>
     </body>
 </html>
-
-
 

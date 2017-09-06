@@ -1,7 +1,7 @@
 {
   "require": {
       "facebook/php-ads-sdk": "2.10.*",
-      "ext-mbstring": "*"
+      "ext-mbstring": "*",
+    "facebook/graph-sdk": "^5.6"
     }
 }
-

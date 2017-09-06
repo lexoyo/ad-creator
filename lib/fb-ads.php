@@ -134,12 +134,15 @@ function createAdset($account) {
 function cleanupAdset($adset) {
   $ads = $adset->getAds();
   if(count($ads) > 15) {
-    echo "Cleaning up " . count($ads) . " ads from adset $adset->name.\n<br>\n";
-    foreach($ads as $ad) {
-      $ad->deleteSelf();
-    }
-    // delete all ads from the adset
-    echo "Found " . count($ads) . " ads in adset, had to cleanup.\n<br>\n";
+    echo "Found " . count($ads) . " ads in adset $adset->name. Now removing the last one to avoid the 'too many ads in adset' error.\n<br>\n";
+    $ads[0]->deleteSelf();
+
+    // echo "Cleaning up " . count($ads) . " ads from adset $adset->name.\n<br>\n";
+    // foreach($ads as $ad) {
+    //   $ad->deleteSelf();
+    // }
+    // // delete all ads from the adset
+    // echo "Found " . count($ads) . " ads in adset, had to cleanup.\n<br>\n";
   }
 }
 

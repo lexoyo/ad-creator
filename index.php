@@ -15,9 +15,20 @@
         <div class="container-fluid">
             <div class="row">
      	        <header>
-     	            <div class="logo col-sm-8 col-sm-offset-2"></div>
+     	            <a class="logo col-sm-8 col-sm-offset-2" href="/"></a>
+<div id="status" class="col-sm-4 col-sm-offset-2"></div>
      	        </header>
                 <div class="col-sm-8 col-sm-offset-2">
+<?php
+include('lib/fb-auth.php');
+$fb = getFacebook();
+if(!isLoggedIn($fb) || !getUser($fb)) {
+  header('Location: /login.php');
+  exit;
+}
+$user = getUser($fb);
+displayUser($user);
+?>
      	            <!-- <h1>Ad Creator Test Page</h1> -->
                     <form id="form" action="./advertise.php" method="POST" class="row">
                         <div class="field-set">
