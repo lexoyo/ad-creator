@@ -27,7 +27,7 @@ if($user) {
   header('Location: /');
   exit;
 } 
-login($fb, 'http://localhost:8080/login-callback.php');
+login($fb, "http://$_SERVER[HTTP_HOST]/login-callback.php");
 ?>
 
 		</div>
