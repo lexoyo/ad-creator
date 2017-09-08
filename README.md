@@ -1,3 +1,19 @@
+# Facebook Ad Creator
+
+## About
+
+This app is made for companies to create ads automatically every time an event occures, e.g. publication of a new blog post, new items for sale, promotions, daily specials... The content used to generate the app is created with a smart algorithm, which is able to get the best title and text out of your content. The generated apps are then available in your Ad Manager, ready to be activated or modified.
+
+The php script `advertise.php` is a web hook called by IFTTT when an event occures and it uses embed.ly to extract the main features of the content. The page `index.php` is there for you to test the service, so you can submit an URL to advertise.php the same way IFTTT does it.
+
+Here this is a demo of this app online:
+https://ad-creator.herokuapp.com/
+
+detailed step-by-step instructions:
+* open https://ad-creator.herokuapp.com/
+* authorize the app to access your ad account **which needs to have a payment method set** (be careful it may delete ads in the 1st ad set if it needs to)
+* submit an URL like this one: https://www.thinkgeek.com/product/knio/
+* go to your ad manager and you should see the new ad (for now the app uses a sandbox account so you will not actually see your ad)
 
 
 ## Use case
