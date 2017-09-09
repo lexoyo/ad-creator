@@ -35,11 +35,14 @@ help create large advert campaign
 ## Demo
 
 The web hook (http://localhost:8080/advertise.php?url=)
+* https://ifttt.com/applets/61081485d
+* http://lexoyo.me/rss-feed-test/feed.xml
+* https://github.com/lexoyo/rss-feed-test
+* heroku logs https://dashboard.heroku.com/apps/ad-creator/logs
 * ~https://github.com/lexoyo/so-simple-theme/~
 * ~https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request~
-* https://twitter.com/billy3213
-* iftt applet for tweeter feed https://ifttt.com/applets/61079447d-if-new-tweet-by-billy3213-then-make-a-web-request
-* heroku logs https://dashboard.heroku.com/apps/ad-creator/logs
+* ~https://twitter.com/billy3213~
+* ~iftt applet for tweeter feed https://ifttt.com/applets/61079447d-if-new-tweet-by-billy3213-then-make-a-web-request~
 
 test urls (http://ad-creator.herokuapp.com/):
 * http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
