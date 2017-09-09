@@ -34,15 +34,18 @@ help create large advert campaign
 
 ## Demo
 
+The web hook (http://localhost:8080/advertise.php?url=)
+* ~https://github.com/lexoyo/so-simple-theme/~
+* ~https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request~
+* https://twitter.com/billy3213
+* iftt applet for tweeter feed https://ifttt.com/applets/61079447d-if-new-tweet-by-billy3213-then-make-a-web-request
+* heroku logs https://dashboard.heroku.com/apps/ad-creator/logs
+
 test urls (http://ad-creator.herokuapp.com/):
 * http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html
 * https://www.silexlabs.org/event/silex-labs-aperopensource-edition-mois-daout/
 * https://www.thinkgeek.com/product/knio/
 * https://singchan.github.io/bot-emploi/
-
-The web hook (http://localhost:8080/advertise.php?url=)
-* https://github.com/lexoyo/so-simple-theme/
-* https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request
 
 third party tools
 * ifttt to automate (watch RSS feeds, emails...)
@@ -82,7 +85,6 @@ rss
 * https://github.com/lexoyo/so-simple-theme/
 * https://ifttt.com/applets/60555094d-if-new-feed-item-from-http-lexoyo-me-so-simple-theme-feed-xml-then-make-a-web-request
 * https://ifttt.com/applets/60553950d-if-new-feed-item-from-http-www-silexlabs-org-feed-then-make-a-web-request
-* https://adce2c63.ngrok.io/advertize.php
 
 embed ly
 * https://api.embed.rocks/api/?url=http://www.vauxhall.co.uk/offers-finance/cars_offers/corsa/flexible-personal-lease.html&key=85f6a5c5-06f8-45d9-b3cc-c41f931c79d2

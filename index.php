@@ -30,21 +30,20 @@ $user = getUser($fb);
 displayUser($user);
 ?>
      	            <!-- <h1>Ad Creator Test Page</h1> -->
-                    <form id="form" action="./generate.php" method="GET" class="row">
+                    <form id="form" action="./advertise.php" method="GET" class="row">
                         <div class="field-set">
                             <legend>Advertise an URL</legend>
                             <div class="form-group col-md-9 no-padding-left">
                                 <label>URL</label>
                                 <input id="url" name="url" type="url" class="form-control"/>
                             </div>
-			    <!-- 
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-3 option-group no-padding-left">
                                 <label>Option</label>
-                                <select id="option" name="option" class="form-control">
-                                    <option value="test">to do</option>
+                                <select id="option" name="sandbox" class="control">
+                                    <option value="0">My Ad Account</option>
+                                    <option value="1">Sandbox Ad Account</option>
                                 </select>
                             </div>
-			    -->
                         </div>
                         <!--
                         <div class="field-set" data-jw-player-options>
@@ -52,7 +51,7 @@ displayUser($user);
                         </div>
 			-->
                         <div class="form-group clear">
-                            <input type="submit" name="op" value="Run" class="btn btn-primary submit" />
+                            <input type="submit" class="btn btn-primary submit" />
                         <!--
                             <input type="reset" value="Reset" class="btn btn-default" />
                             <a href="?" class="btn btn-default">Defaults</a>

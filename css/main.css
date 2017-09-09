@@ -44,3 +44,6 @@ a {
 .clear {
   clear: both;
 }
+.option-group label {
+  display: block;
+}
