@@ -7,8 +7,8 @@ ini_set("display_errors", 1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
-if(file_exists('../config.php'))
-  include '../config.php';
+if(file_exists(__DIR__.'/../config.php'))
+  include __DIR__.'/../config.php';
 
 function getConfig($name) {
   // look for the env var

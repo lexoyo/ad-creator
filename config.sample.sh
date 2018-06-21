@@ -7,5 +7,6 @@ export FB_APP_ID=xxxxxxxx
 export FB_APP_ACCESS_TOKEN=xxxxxxxx
 export FB_APP_SECRET=xxxxxxxx
 export FB_ACCOUNT_ID=xxxxxxxx
+export FB_ADS_API_VERSION=xxxxxxxx
 
 

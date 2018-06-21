@@ -31,7 +31,8 @@ function createAdFromContent($ad_account_id, $url, $imageUrl, $title, $body, $us
 }
 use FacebookAds\Object\AdAccountUser;
 function getAdAccounts($user) {
-  $adUser = new AdAccountUser('me');
+  $adUser = new AdAccountUser();
+  $adUser->setId('me');
   return $adUser->getAdAccounts();
 }
 function getCurrentAdAccountId($adAccounts) {
