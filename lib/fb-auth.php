@@ -13,7 +13,7 @@ function getFacebook() {
   $fb = new \Facebook\Facebook([
     'app_id' => $app_id,
     'app_secret' => $app_secret,
-    'default_graph_version' => 'v2.11',
+    'default_graph_version' => getConfig('FB_ADS_API_VERSION'),
     //'default_access_token' => '{access-token}', // optional
   ]);
  
