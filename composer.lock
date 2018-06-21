@@ -1,24 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "96eadc4a7431ab354cd286efa4b83909",
-    "content-hash": "966c43bc7d073bcdd07b4104a89934f9",
+    "content-hash": "d0ef52ac150a0b28434bcb8872b64fc9",
     "packages": [
         {
             "name": "facebook/graph-sdk",
-            "version": "5.6.1",
+            "version": "5.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-graph-sdk.git",
-                "reference": "2f9639c15ae043911f40ffe44080b32bac2c5280"
+                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/2f9639c15ae043911f40ffe44080b32bac2c5280",
-                "reference": "2f9639c15ae043911f40ffe44080b32bac2c5280",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
+                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
                 "shasum": ""
             },
             "require": {
@@ -63,20 +62,20 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2017-08-16 17:28:07"
+            "time": "2018-02-14T23:24:51+00:00"
         },
         {
             "name": "facebook/php-ads-sdk",
-            "version": "2.10.1",
+            "version": "2.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/facebook-php-ads-sdk.git",
-                "reference": "bfea2cc94565283476ed689889486f9fa305d604"
+                "reference": "4d58eec24b74bfd954d964aec26ce7249e84816c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-ads-sdk/zipball/bfea2cc94565283476ed689889486f9fa305d604",
-                "reference": "bfea2cc94565283476ed689889486f9fa305d604",
+                "url": "https://api.github.com/repos/facebook/facebook-php-ads-sdk/zipball/4d58eec24b74bfd954d964aec26ce7249e84816c",
+                "reference": "4d58eec24b74bfd954d964aec26ce7249e84816c",
                 "shasum": ""
             },
             "require-dev": {
@@ -100,7 +99,7 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2017-07-18 21:11:11"
+            "time": "2018-01-22T19:48:08+00:00"
         }
     ],
     "packages-dev": [],
